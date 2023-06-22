@@ -6,6 +6,41 @@
     #canvas {
       border: 1px solid #000;
     }
+
+    #nameInput {
+      display: block;
+      width: 300px;
+      margin: 20px auto;
+      font-size: 18px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+
+    #submitButton {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #C0891D;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #downloadButton {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #C0891D;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -13,15 +48,17 @@
   <br>
   <input type="text" id="nameInput" placeholder="Enter your name">
   <button id="submitButton">Submit</button>
+  <br>
+  <a href="#" download="design_with_name.png" id="downloadButton" style="display: none;">Download Image</a>
 
   <script>
     // Load the design onto the canvas
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 
-    // Replace 'C:\Users\WIN 10\Desktop\Ill_TuT\khanbshi\Eid.PNG' with the path to your PNG image
+    // Replace 'Eid.PNG' with the path to your PNG image
     var designImage = new Image();
-    designImage.src = 'C:\\Users\\WIN 10\\Desktop\\Ill_TuT\\khanbshi\\Eid.PNG';
+    designImage.src = 'Eidd.png';
 
     designImage.onload = function() {
       var canvasAspectRatio = canvas.width / canvas.height;
@@ -63,6 +100,11 @@
 
       // Draw the text at the specified coordinates
       ctx.fillText(name, centerX, y);
+
+      // Show the download button
+      var downloadButton = document.getElementById('downloadButton');
+      downloadButton.style.display = 'block';
+      downloadButton.href = canvas.toDataURL(); // Set the data URL as the href for download
     });
 
     // Generate the shareable URL
